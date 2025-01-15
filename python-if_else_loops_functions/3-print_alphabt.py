@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-for a in range (97, 122):
-print
+for i in range(97, 123):
+    if chr(i) not in 'qe':
+        print("{}".format(chr(i)), end="")
