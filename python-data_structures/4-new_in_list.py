@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 def new_in_list(my_list, idx, element):
-    if idx < 0 or idx > (len(my_list)):
-        return (str(my_list))
-    my_list[idx] = element
-    return my_list
+    # Create a copy of the original list
+    new_list = my_list[:]
+    
+    # Check if the index is within range
+    if 0 <= idx < len(my_list):
+        # Replace the element at the specified index
+        new_list[idx] = element
+    
+    # Return the new list (unchanged if index is invalid)
+    return new_list
