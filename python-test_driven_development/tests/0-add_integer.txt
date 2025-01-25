@@ -1,12 +1,81 @@
-#!/usr/bin/python3
-def add_integer(a, b=98):
-    if not isinstance(a, (int, float)):
-        raise TypeError("a must be an integer")
+Test for ``add_integer`` function
+=================================
 
-    if not isinstance(b, (int, float)):
-        raise TypeError("b must be an integer")
+Import function ``add_integer``
+---------------------------------
 
-    a = int(a)
-    b = int(b)
+This is an test file, for add_integer function:
 
-    return a + b
+Import the function
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Test
+
+	>>> add_integer(1, 2)
+	3
+	>>> add_integer(100, -2)
+	98
+	>>> add_integer(2)
+	100
+	>>> add_integer(0, 2)
+	2
+	>>> add_integer(-100, 2)
+	-98
+	>>> add_integer(100.3, -2)
+	98
+	>>> add_integer(100, 50.567)
+	150
+	>>> add_integer(50.567, 100)
+	150
+	>>> add_integer(0, 50.567)
+	50
+	>>> add_integer(50.567, 0)
+	50
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(2, None)
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+	>>> add_integer("hola")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(0, "Hola")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer(0, [25])
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer([25])
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(0, [25, 'hola'])
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer([25, 'hola'])
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(0, {1:25})
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer({1:25})
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(0, 5j)
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer(5j)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+    
