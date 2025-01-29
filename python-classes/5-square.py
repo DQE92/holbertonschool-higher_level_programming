@@ -59,3 +59,17 @@ class Square:
         """
         area = self.__size * self.__size
         return area
+
+    def my_print(self):
+        """Prints text representation of square in hash chars.
+
+        Attributes:
+            __size (int): length of one side of square
+
+        """
+        for row in range(0, self.__size):
+            for col in range(0, self.__size):
+                print("#", end="")
+            print()
+        if self.__size is 0:
+            print()
