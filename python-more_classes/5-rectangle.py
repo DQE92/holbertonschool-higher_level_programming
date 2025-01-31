@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-class Rectangle:
-    """Class that defines a rectangle with width and height"""
 
+"""Class that defines a rectangle with width and height"""
+
+class Rectangle:
+    
     def __init__(self, width=0, height=0):
         """Class constructor with default values"""
-        self.width = width  # Calls the setter for validation
-        self.height = height  # Calls the setter for validation
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
@@ -75,5 +77,3 @@ class Rectangle:
              that allows recreating the object using eval().
         """
         return f"Rectangle({self.width}, {self.height})"
-    
-    
