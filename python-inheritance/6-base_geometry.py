@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-class BaseGeometry:
-    """Base class for geometry."""
+"""
+This module contains the class BaseGeometry
+"""
 
+
+class BaseGeometry:
+    """A class with method area"""
     def area(self):
-        """
-        Method that should calculate the area.
-        However, it is not yet implemented.
-        Instead, it raises an exception to enforce implementation in subclasses.
-        """
+        """raises an exception when called"""
         raise Exception("area() is not implemented")
