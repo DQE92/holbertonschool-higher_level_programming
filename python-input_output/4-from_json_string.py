@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-import json
 """
-    Converts a JSON string into a Python object.
+This module contains the json str function
+"""
 
-    Parameters:
-    my_str (str): A string containing JSON data.
+import json
 
-    Returns:
-    any: The corresponding Python object (e.g., list, dictionary, string, etc.).
-    """
+
 def from_json_string(my_str):
+    """returns an object represented by a JSON string
+    args:
+        my_str: string parameter"""
     return json.loads(my_str)

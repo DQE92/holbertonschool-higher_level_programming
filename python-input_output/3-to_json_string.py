@@ -1,13 +1,15 @@
 #!/usr/bin/python3
+"""
+This module contains the JSON Representation
+of object string
+"""
+
 import json
+
+
 def to_json_string(my_obj):
-    """
-    Converts a Python object into a JSON string.
+    """returns the JSON representation of an object (string)
 
-    Parameters:
-    my_obj (any): The Python object to convert (e.g., dictionary, list, string).
-
-    Returns:
-    str: The JSON string representation of the object.
-    """
+    args:
+        my_obj: The object String"""
     return json.dumps(my_obj)
