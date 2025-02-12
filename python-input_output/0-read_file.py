@@ -1,5 +1,12 @@
 #!/usr/bin/python3
+"""
+This module contains the read_file function
+"""
 def read_file(filename=""):
-    """Reads a text file (UTF8) and prints it to stdout."""
+    """""reads a text file(UTF8) and prints it to stdout
+
+    args:
+        filename: Name of the file read
+    """
     with open(filename, "r", encoding="utf-8") as f:
         print(f.read(), end="")
