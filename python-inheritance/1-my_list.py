@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-"""
-This module contains the MyList class
-"""
+""" Nameless module containing MyList class """
 
 
 class MyList(list):
-    """a subclass of list"""
-    def __init__(self):
-        """initializes the object"""
-        super().__init__()
+    """MyList Class.
+    """
 
     def print_sorted(self):
-        """prints sorted list"""
-        print(sorted(self))
+        """Sorts the contents of the list class and returns them"""
+
+        sorted_list = self.copy()
+        sorted_list.sort()
+        print(sorted_list)
+
+        return self
