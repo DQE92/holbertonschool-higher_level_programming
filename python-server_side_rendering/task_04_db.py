@@ -5,29 +5,45 @@ import sqlite3
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
 @app.route("/")
 def home():
     """
-    Renders the index.html template when the home route is accessed.
+    Render the index.html template for the home page.
+    
+    Returns:
+        A rendered HTML template for the homepage.
     """
     return render_template("index.html")
 
 @app.route("/about")
 def about():
     """
-    Renders the about.html template when the about route is accessed.
+    Render the about.html template for the about page.
+    
+    Returns:
+        A rendered HTML template for the about page.
     """
     return render_template("about.html")
 
 @app.route("/contact")
 def contact():
     """
-    Renders the contact.html template when the contact route is accessed.
+    Render the contact.html template for the contact page.
+    
+    Returns:
+        A rendered HTML template for the contact page.
     """
     return render_template("contact.html")
 
 @app.route('/items')
 def show_items():
+    """
+    Load items from a JSON file and render them in an HTML template.
+
+    Returns:
+        A rendered HTML template displaying a list of items.
+    """
     file_path = os.path.join(os.path.dirname(__file__), "items.json")
 
     with open(file_path, "r") as file:
@@ -38,6 +54,16 @@ def show_items():
     return render_template("items.html", items=items)
 
 def read_json(file_path):
+    """
+    Read and parse JSON data from a given file.
+
+    Args:
+        file_path (str): The path to the JSON file.
+
+    Returns:
+        list or None: A list of dictionaries containing product data, 
+                      or None if the file is not found.
+    """
     try:
         with open(file_path, "r") as file:
             return json.load(file)
@@ -45,6 +71,16 @@ def read_json(file_path):
         return None
 
 def read_csv(file_path):
+    """
+    Read and parse CSV data into a list of dictionaries.
+
+    Args:
+        file_path (str): The path to the CSV file.
+
+    Returns:
+        list or None: A list of dictionaries containing product data, 
+                      or None if the file is not found.
+    """
     try:
         products = []
         with open(file_path, "r") as file:
@@ -61,6 +97,17 @@ def read_csv(file_path):
         return None
 
 def read_sqlite(db_path, product_id=None):
+    """
+    Read product data from an SQLite database.
+
+    Args:
+        db_path (str): The path to the SQLite database file.
+        product_id (int, optional): The ID of a specific product to retrieve. Defaults to None.
+
+    Returns:
+        list or None: A list of dictionaries containing product data, 
+                      or None if an error occurs or no data is found.
+    """
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -78,6 +125,16 @@ def read_sqlite(db_path, product_id=None):
 
 @app.route('/products')
 def show_products():
+    """
+    Handle product requests from different data sources (JSON, CSV, SQLite).
+
+    Query Parameters:
+        source (str): The data source ("json", "csv", or "sql").
+        id (int, optional): The ID of a specific product to retrieve.
+
+    Returns:
+        A rendered HTML template displaying product data or an error message.
+    """
     source = request.args.get("source")
     product_id = request.args.get("id", type=int)
 
