@@ -26,12 +26,14 @@ def contact():
 
 @app.route('/items')
 def show_items():
-    with open("items.json", "r") as file:
+    file_path = os.path.join(os.path.dirname(__file__), "items.json")
+
+    with open(file_path, "r") as file:
         data = json.load(file)
-        
-        items = data.get("items, []")
-        
-        return render_template("items.html", items=items)
+
+    items = data.get("items", [])
+
+    return render_template("items.html", items=items)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
